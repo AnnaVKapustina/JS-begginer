@@ -1,0 +1,38 @@
+<script>
+    var arg1 = +prompt("Введите первую переменную");
+    var arg2 = +prompt("Введите вторую пременную");
+    var operation = prompt("Введите знак вычисления, которое нужно выполнить: +, -, /, *");
+    function sum(a, b) {
+        return (a + b);
+    }
+    function diff(a, b) {
+        return (a - b);
+    }
+    function multi(a, b) {
+        return (a * b);
+    }
+    function div(a, b) {
+        return (a / b);
+    }
+    function mathOperation(arg1, arg2, operation) {
+
+        switch (operation) {
+            case "+":
+                alert("Сумма чисел: " + sum(arg1, arg2));
+                break
+            case "-":
+                alert("Разность чисел: " + diff(arg1, arg2));
+                break
+            case "*":
+                alert("Произведение чисел: " + multi(arg1, arg2));
+                break
+            case "/":
+                alert("Частное чисел: " + div(arg1, arg2));
+                break
+            default:
+                alert("Введен некорректный знак вычисления");
+        }
+    }
+    mathOperation(arg1, arg2, operation);
+
+</script>
