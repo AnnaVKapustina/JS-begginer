@@ -1,0 +1,30 @@
+<script>
+    var number = +prompt("Введите любое число от 0 до 999");
+    var obj = {};
+    function Obj(num) {
+        if (num >= 100 && num <= 999) {
+            var n = String(num);
+            obj.ed = n[2];
+            obj.des = n[1];
+            obj.sot = n[0];
+            return console.log(obj);
+        } else if (num >= 10 && num <= 99) {
+            var n = String(num);
+            obj.ed = n[1];
+            obj.des = n[0];
+            obj.sot = 0;
+            return console.log(obj);
+        } else if (num >= 0 && num <= 9) {
+            obj.ed = num;
+            obj.des = 0;
+            obj.sot = 0;
+            return console.log(obj);
+        } else {
+            console.log("Ваше число больше 999, меньше 0, либо введено некорректное значение ");
+            console.log(obj);
+
+        }
+    }
+    Obj(number);
+
+</script>
