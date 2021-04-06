@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Шахматы</h1>
+    <script>
+        var table = document.createElement('table');
+        var flag = true;
+        var trr = document.createElement('tr');
+        var trr2 = document.createElement('tr');
+        var arr = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        var chessWhite = ['&#9814;', '&#9816;', '&#9815;', '&#9813;', '&#9812;', '&#9815;', '&#9816;', '&#9814;'];
+        var chessBlack = ['&#9820;', '&#9822;', '&#9821;', '&#9819;', '&#9818;', '&#9821;', '&#9822;', '&#9820;'];
+
+        function draw() {
+            //Пишем буквы вверху
+            for (var k = 0; k < 9; k++) {
+
+                var td = document.createElement('td');
+                td.className = 'letters';
+                td.style.transform = 'rotate(180deg)';
+                td.innerHTML = arr[k];
+                trr.appendChild(td);
+            }
+            table.appendChild(trr);
+            //Создаем ячейки доски
+            for (var i = 0; i < 8; i++) {
+                var tr = document.createElement('tr');
+                //Пишем цифры слева
+                var tdd = document.createElement('td');
+                tdd.className = 'letters';
+                tdd.innerHTML = 8 - i;
+                tr.appendChild(tdd);
+                //Делаем черно-белые клетки
+                for (var j = 0; j < 8; j++) {
+                    if (j == 0)
+                        flag = !flag;
+                    var td = document.createElement('td');
+                    td.className = 'cells';
+                    if (flag) {
+                        td.style.background = 'white';
+                    } else
+                        td.style.background = 'gray';
+                    flag = !flag;
+                    tr.appendChild(td);
+                }
+                //Пишем цифры справа
+                table.appendChild(tr);
+                var tdd = document.createElement('td');
+                tdd.className = 'letters';
+                tdd.style.transform = 'rotate(180deg)';
+                tdd.innerHTML = 8 - i;
+                tr.appendChild(tdd);
+            }
+            //Пишем буквы внизу
+            for (var k = 0; k < 9; k++) {
+                var td2 = document.createElement('td');
+                td2.innerHTML = arr[k];
+                td2.className = 'letters';
+                trr2.appendChild(td2);
+            }
+            table.appendChild(trr2);
+            document.body.appendChild(table);
+        }
+        function chess(i, j, text) {
+            document.querySelector('table').rows[i].cells[j].innerHTML = text;
+        }
+        draw();
+        //Заполняем доску фигурами
+        for (n = 1; n < 9; n++) {
+            chess(2, n, '&#9823;'); //Заполняем доску черными пешками
+            chess(1, n, chessBlack[n - 1]); //Заполняем доску черными фигурами
+            chess(7, n, '&#9817;'); //Заполняем доску белыми пешками
+            chess(8, n, chessWhite[n - 1]); //Заполняем доску белыми фигурами
+        }
+    </script>
+
+</body>
+
+</html>
