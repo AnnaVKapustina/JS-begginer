@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var slideIndex = 1; /* Индекс слайда по умолчанию */
+        var i;
+        var slides = document.getElementsByClassName("item");
+        function plusSlide() {   /* Функция увеличивает индекс на 1, показывает следующй слайд*/
+            showSlides(slideIndex += 1);
+        }
+        function minusSlide() { /* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+            showSlides(slideIndex -= 1);
+        }
+        function showSlides(n) {  /* Основная функция слайдера */
+
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+        function createBigPicture(e) {  //Функция для вывода больших картинок, по клику на маленькую
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[event.currentTarget.id[1] - 1].style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="big_block">
+        <a class="prev" onclick="minusSlide()">&#10094;</a>
+        <div id="bPic" class="slider">
+            <div class="item">
+                <img src="big0.jpg" alt="Первый слайд">
+            </div>
+
+            <div class="item">
+                <img src="big1.jpg" alt="Второй слайд">
+            </div>
+
+            <div class="item">
+                <img src="big2.jpg" alt="Третий слайд">
+            </div>
+        </div>
+        <a class="next" onclick="plusSlide()">&#10095;</a>
+    </div>
+    <div class="small_block">
+        <div class="small">
+            <img id="i1" class="small_pic" src="small0.jpg" alt="photo" onclick="createBigPicture()">
+        </div>
+        <div class="small">
+            <img id="i2" class="small_pic" src="small1.jpg" alt="photo" onclick="createBigPicture()">
+        </div>
+        <div class="small">
+            <img id="i3" class="small_pic" src="small2.jpg" alt="photo" onclick="createBigPicture()">
+        </div>
+    </div>
+</body>
+
+</html>
