@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="big_block">
+            <img class="big" src="big0.jpg" alt="" onerror="imgError()">
+        </div>
+        <div class="small_block">
+            <div class="small">
+                <img id="i1" class="small_pic" src="small0.jpg" alt="photo">
+            </div>
+            <div class="small">
+                <img id="i2" class="small_pic" src="small1.jpg" alt="photo">
+            </div>
+            <div class="small">
+                <img id="i3" class="small_pic" src="small2.jpg" alt="photo">
+            </div>
+        </div>
+    </div>
+    <script>
+        var images = document.querySelectorAll(".small_pic");
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function (e) {
+                document.querySelector(".big").src = "big" + (e.target.id.split("")[1] - 1) + ".jpg";
+            }
+        }
+        function imgError() {
+            alert("Большой картинки нет, кликните на другую картинку");
+        }
+    </script>
+</body>
+
+</html>
